@@ -1,12 +1,12 @@
 {{- if .Values.ingress.enabled -}}
-{{- $fullName := include "kube-auth-express.fullname" . -}}
+{{- $fullName := include "test.fullname" . -}}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: {{ $fullName }}
   labels:
-    app.kubernetes.io/name: {{ include "kube-auth-express.name" . }}
-    helm.sh/chart: {{ include "kube-auth-express.chart" . }}
+    app.kubernetes.io/name: {{ include "test.name" . }}
+    helm.sh/chart: {{ include "test.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
   {{- with .Values.ingress.annotations }}
@@ -25,10 +25,15 @@ spec:
   {{- end }}
 {{- end }}
   rules:
-   - http:
-      paths:
-       - path: {{ .Values.ingress.path }}
-         backend:
-          serviceName: {{ $fullName }}
-          servicePort: 80
+  {{- range .Values.ingress.hosts }}
+    - host: {{ .host | quote }}
+      http:
+        paths:
+        {{- range .paths }}
+          - path: {{ . }}
+            backend:
+              serviceName: {{ $fullName }}
+              servicePort: http
+        {{- end }}
+  {{- end }}
 {{- end }}

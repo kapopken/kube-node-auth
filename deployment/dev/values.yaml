@@ -1,7 +1,9 @@
 replicaCount: 1
 image:
   repository: kapopken/kube-auth-test
-  tag: latest
+  tag: release-feature_test
+  pullPolicy: Always
+  port: 8080
 nameOverride: ""
 fullnameOverride: ""
 
@@ -9,17 +11,16 @@ service:
   type: ClusterIP
   port: 80
 
-controller:
- ingressClass: auth-test
 ingress:
+ enabled: true
  annotations: 
   kubernetes.io/ingress.class: auth-test
- hosts:
-  - host: chart-example.local
-    paths: ['/*']
+  nginx.ingress.kubernetes.io/ssl-redirect: "false"
+  nginx.ingress.kubernetes.io/rewrite-target: /$1
+ path: '/(.*)'
 
 configMap:
- credientials:
+ credential:
   foo: aGVsbG8=
   bar: d29ybGQ=
 
