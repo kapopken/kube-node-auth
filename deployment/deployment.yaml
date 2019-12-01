@@ -1,0 +1,28 @@
+apiVersion: apps/v1beta2 
+kind: Deployment
+metadata:
+  name: wordpress
+spec:
+  selector:
+    matchLabels:
+      app: wordpress
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: wordpress
+    spec:
+      containers:
+      - image: wordpress:4.8-apache
+        name: wordpress
+        ports:
+        - containerPort: 80
+          name: wordpress
+        volumeMounts:
+        - name: credential
+          mountPath: /var/dist
+      volumes:
+        - name: credential
+          secret:
+            secretName: credential
