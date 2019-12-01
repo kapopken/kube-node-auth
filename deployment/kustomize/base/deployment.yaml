@@ -1,24 +1,22 @@
 apiVersion: apps/v1beta2 
 kind: Deployment
 metadata:
-  name: wordpress
+  name: kube-auth-test
 spec:
   selector:
     matchLabels:
-      app: wordpress
-  strategy:
-    type: Recreate
+      app: kube-auth-test
   template:
     metadata:
       labels:
-        app: wordpress
+        app: kube-auth-test
     spec:
       containers:
-      - image: wordpress:4.8-apache
-        name: wordpress
+      - image: kapopken/kube-auth-test
+        name: kube-auth-test
         ports:
         - containerPort: 80
-          name: wordpress
+          name: kube-auth-test
         volumeMounts:
         - name: credential
           mountPath: /var/dist

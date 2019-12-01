@@ -1,0 +1,25 @@
+replicaCount: 1
+image:
+  repository: kapopken/kube-auth-test
+  tag: latest
+nameOverride: ""
+fullnameOverride: ""
+
+service:
+  type: ClusterIP
+  port: 80
+
+controller:
+ ingressClass: auth-test
+ingress:
+ annotations: 
+  kubernetes.io/ingress.class: auth-test
+ hosts:
+  - host: chart-example.local
+    paths: ['/*']
+
+configMap:
+ credientials:
+  foo: aGVsbG8=
+  bar: d29ybGQ=
+

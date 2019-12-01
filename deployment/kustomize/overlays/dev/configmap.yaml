@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kube-auth-test
+configuration:
+- credential: aGVsbG8=
+  path: /foo
+- credential: d29ybGQ=
+  path: /bar
