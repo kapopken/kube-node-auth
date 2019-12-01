@@ -13,7 +13,7 @@ USER node
 RUN npm ci --only=production
 COPY bin/www ./bin/www
 COPY --chown=node:node . .
-
+RUN ls server/
 EXPOSE 8080
 
 CMD [ "node", "./bin/www" ]
