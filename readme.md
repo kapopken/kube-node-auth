@@ -7,13 +7,14 @@ Each base URL accepts one set of credentails and all sub paths use the same cred
 1. Install node: https://nodejs.org/en/download/
 2. Install kubectl: https://kubernetes.io/docs/tasks/tools/install-kubectl/
 3. Install helm: https://helm.sh/docs/intro/install/
-4. Create env.yaml file in /server folder: see below
+4. git clone https://github.com/kapopken/kube-node-auth.git
+5. Create env.yaml file in /server folder: see below
 env.yaml
 ``` 
 configuration:
- - credential: hello
+ - credential: aGVsbG8=
     path: /foo
- - credential: world
+ - credential: d29ybGQ=
     path: /bar
  ```
 
@@ -74,6 +75,11 @@ VS Code:
 ## Local Images
 1. cd to the root of the project.
 2. docker build -f Dockerfile -t {yourname} .
+
+## Run locally from Docker
+ 1. cd to the root of the project
+ 2. docker run -p 8080:3000 -v $(pwd)/server/env.yaml:/usr/src/app/server/env.yaml test 
+
 
 Resources:
  * https://github.com/goldbergyoni/nodebestpractices/blob/master/section/projectstructre/configguide.md
