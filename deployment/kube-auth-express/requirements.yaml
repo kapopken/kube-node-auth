@@ -1,0 +1,4 @@
+# dependencies:
+# - name:  nginx-ingress
+#   repository: alias:nginxinc/helm-charts
+#   version: stable

@@ -1,9 +1,0 @@
-commonLabels:
-  app: auth-service
-resources:
-- deployment.yaml
-- service.yaml
-configMapGenerator:
-- name: auth-creds
-  files:
-  - config.yaml

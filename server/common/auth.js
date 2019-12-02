@@ -1,11 +1,7 @@
-function challenge (req, res, next) {
-
-  }
   function configure(options) {
-    console.log(options);
+    //entry point to set static values or configuration
+    console.log('initializing auth');
     return function authMiddleware(req, res, next) {
-
-
             console.log('Request URL:', req.originalUrl)
             const route = options.find((path)=> {
 
@@ -28,13 +24,9 @@ function challenge (req, res, next) {
                 // Access denied...
                 res.set('WWW-Authenticate', `Basic realm="${route.path}"`) // change this
                 res.status(401).send('Authentication required.') // custom message
-      
 
-            } else {
-                return next();
-            }
-           
-         
+            } 
+            return next();
     }
    }
 

@@ -2,7 +2,6 @@
 const yaml = require('js-yaml');
 const fs   = require('fs');
 
-
 function readFile(fileName) {
     try {
         var doc = yaml.safeLoad(fs.readFileSync(fileName, 'utf8'));
