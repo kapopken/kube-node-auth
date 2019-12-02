@@ -63,7 +63,7 @@ VS Code:
 3. configmap which is mounted to the container upon deployment which defines the secrets and auth
 
 ## To deploy to AKS (Azure Kubernetes Service)
-1. helm install stable/nginx-ingress  -n auth-test-ingress --set controller.ingressClass=auth-test (** only need to be run once **)
+1. helm install stable/nginx-ingress  -n auth-test --set controller.ingressClass=auth-test (** only need to be run once **)
 2. cd deployment
 3. Modify values.yaml file to the specific values you would like or set them via the helm install
 4. helm install ./kube-auth-express -n auth-test -f values.yaml
