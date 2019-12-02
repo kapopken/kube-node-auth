@@ -74,11 +74,11 @@ VS Code:
 
 ## Local Images
 1. cd to the root of the project.
-2. docker build -f Dockerfile -t {yourname} .
+2. docker build -f Dockerfile -t {imagename} .
 
 ## Run locally from Docker
  1. cd to the root of the project
- 2. docker run -p 8080:3000 -v $(pwd)/server/env.yaml:/usr/src/app/server/env.yaml test 
+ 2. docker run -p 8080:3000 -v $(pwd)/server/env.yaml:/usr/src/app/server/env.yaml {imagename} 
 
 
 Resources:
