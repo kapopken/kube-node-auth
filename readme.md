@@ -52,7 +52,7 @@ project
 Command line:
  1. npm install (from root folder)
  2. npm start
-
+ 3. Navigate to localhost:3000
 VS Code:
   1. F5
   2. Choose node.js runner
