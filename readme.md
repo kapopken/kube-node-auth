@@ -53,10 +53,12 @@ Command line:
  1. npm install (from root folder)
  2. npm start
  3. Navigate to localhost:3000
+ 
 VS Code:
   1. F5
   2. Choose node.js runner
-
+  3. Navigate to localhost:3000
+  
 ## Deploy Setup
 1. Helm chart under /deployment
 2. values file to override in /deployment
